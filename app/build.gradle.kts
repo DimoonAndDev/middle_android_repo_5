@@ -1,9 +1,13 @@
+import com.android.build.gradle.internal.tasks.factory.dependsOn
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.kapt)
+    id("com.example.untranslated-strings")
 }
+tasks.preBuild.dependsOn("findUntranslatedStrings")
 
 android {
     namespace = "com.yandex.practicum.middle_homework_5"

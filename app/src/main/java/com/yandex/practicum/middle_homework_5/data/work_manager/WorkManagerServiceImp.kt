@@ -22,14 +22,14 @@ import java.util.concurrent.TimeUnit
 class WorkManagerServiceImp(
     private val context: Context,
     private val settingsRepository: SettingsRepository,
-    private val scope: CoroutineScope = CoroutineScope(Job() + Dispatchers.IO)
+    scope: CoroutineScope = CoroutineScope(Job() + Dispatchers.IO)
 ) : WorkManagerService {
-    private var period:Long = DEFAULT_REFRESH_PERIOD
+    private var period: Long = DEFAULT_REFRESH_PERIOD
     private var delayed: Long = FIST_LAUNCH_DELAY
 
     init {
         scope.launch {
-            settingsRepository.settingData.collect{ setting ->
+            settingsRepository.settingData.collect { setting ->
                 period = setting.periodic
                 delayed = setting.delayed
                 Log.i(TAG, "DataStoreService get data : period = $period | delayed $delayed")
