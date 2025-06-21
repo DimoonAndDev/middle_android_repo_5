@@ -1,16 +1,20 @@
+import com.android.build.gradle.internal.tasks.factory.dependsOn
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.kapt)
+    id("com.example.untranslated-strings")
 }
+tasks.preBuild.dependsOn("findUntranslatedStrings")
 
 android {
     namespace = "com.yandex.practicum.middle_homework_5"
     compileSdk = 35
     defaultConfig {
         applicationId = "com.yandex.practicum.middle_homework_5"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -66,4 +70,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(project(":settings"))
 }

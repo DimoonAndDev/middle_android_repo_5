@@ -1,4 +1,4 @@
-package com.yandex.practicum.middle_homework_5.data.data_store
+package com.sprint_5.data_store
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -7,7 +7,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.yandex.practicum.middle_homework_5.ui.contract.DataStoreService
+import com.sprint_5.ui.contract.SettingsRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,11 +17,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DataStoreServiceImpl(
+class SettingsRepositoryImpl(
     private val context: Context,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : DataStoreService {
-    private val STORAGE_NAME = "Application setting"
+):SettingsRepository {
+    private val STORAGE_NAME = "Application settings"
     private val REFRESH_PERIOD_KEY = longPreferencesKey("REFRESH_PERIOD")
     private val FIRST_LAUNCH_DELAY_KEY = longPreferencesKey("FIRST_LAUNCH_DELAY")
     private val _settingData = MutableStateFlow(SettingContainer.initial)

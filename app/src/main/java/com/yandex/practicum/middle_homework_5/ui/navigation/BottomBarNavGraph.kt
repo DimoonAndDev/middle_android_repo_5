@@ -7,6 +7,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -14,9 +15,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.sprint_5.ui.screen.SettingsScreen
 import com.yandex.practicum.middle_homework_5.R
 import com.yandex.practicum.middle_homework_5.ui.screen.NewsScreen
-import com.yandex.practicum.middle_homework_5.ui.screen.SettingScreen
 
 @Composable
 fun BottomBarNavGraph(navController: NavHostController) {
@@ -29,7 +30,7 @@ fun BottomBarNavGraph(navController: NavHostController) {
             NewsScreen()
         }
         composable(route = BottomBarScreen.Setting.route) {
-            SettingScreen()
+            SettingsScreen()
         }
     }
 }
